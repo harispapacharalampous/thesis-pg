@@ -1,0 +1,88 @@
+<div class="container">
+<!-- logged in  with posts-->
+<% if current_user %>
+    <div class="column">
+
+    <!-- info text -->
+    <div class="ui middle aligned center aligned grid ">
+        <div class="row">
+            <div class="eleven wide column">
+                <!--h1 class="ui header aligned left">New entry</h1-->
+                <div class="ui divided items secondary segment">
+                     <div class="item" style="text-align:left">
+                        <div class="content">
+                          <div class="header">Activity logging</div>
+                          <div class="meta">
+                              <p>Through this feature of the platform you can log your activites in the form of posts. Every activity has a title to fill in and a description to add comments, if you wish. Each activity also has a type to choose from and a timestamp.</p>
+                          </div>
+                          <div class="description">
+                            <p></p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="item" style="text-align:left">
+                        <div class="content">
+                          <div class="header">Activity types</div>
+                            <% if current_user && current_user.condition == 1%>
+                          <div class="meta">
+                              <p> You are free to choose activity types from a group of low intensity physical activities. Those cover the whole spectrum of physical activity, from sport to commuting, gardening and even housework. The goal to perfom as many low intensity physical activities as you wish. In the <b>"PLANS"</b> section you can find a sample schedule for activity and we higly encourage you to follow it. It is formed under the guideline of the World Health Organisation for a healhty and active daily lifestyle. </p>
+                          </div>
+                            <% else %>
+                          <div class="meta">
+                              <p> You are free to choose activity types from the following three low intensity physical activities. Walking and commuting (cycling or else) are good examples of everyday low intensity exercise. If those do not cover your preferences, you can choose <b>"Other"</b>as activity type and type in the description more details of what you did. The goal to perfom as many low intensity physical activities as you wish. In the <b>"PLANS"</b> section you can find a sample schedule for activity and we higly encourage you to follow it. It is formed under the guideline of the World Health Organisation for a healhty and active daily lifestyle. </p>
+                          </div>
+                            <% end %>
+                          <div class="description">
+                            <p></p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="item" style="text-align:left">
+                        <div class="content">
+                          <div class="header">Mood and entertainment</div>
+                          <div class="meta">
+                              <p>We want you to think and reflect on which extend you had fun during this activity and what was your mood during that activity. Please don not forget to fill in those two questions through the sliders !</p>
+                          </div>
+                          <div class="description">
+                            <p></p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- info text -->
+
+    <!-- button -->
+        <div class="ui middle aligned center aligned grid ">
+            <div class="row">
+                <div class="eleven wide column">
+                    <% if current_user && current_user.condition==1%>
+                        <%= link_to "NEW ENTRY", new_post_path(:post => {:created_at => DateTime.now }), class: "ui secondary segment larger-text", style: 'width:100%'%>
+                    <% else %>
+                        <%= link_to "WALK", new_post_path(:post => {:created_at => DateTime.now, :entry_type => 1 }), class: "ui secondary segment larger-text", style: 'width:100%'%>
+                        <%= link_to new_post_path(:post => {:created_at => DateTime.now, :entry_type => 2 }), class: "ui secondary segment larger-text", style: 'width:100%' do%> COMMUTE<%end%>
+                        <%= link_to "OTHER", new_post_path(:post => {:created_at => DateTime.now, :entry_type => 3 }), class: "ui secondary segment larger-text", style: 'width:100%'%>
+                    <% end %>
+
+                </div>
+            </div>
+        </div>
+    <!-- button -->
+    </div>
+    <% else %>
+    <!-- not logged in view -->
+        <div style="margin-top: 20px;margin-bottom: 20px; " class="not-logged">
+            <div class="row justify-content-center">
+                <div class="profile-userbuttons" style="margin-right: 20px;">
+                    <a href="<%= new_user_registration_path %>"><button type="button" class="btn btn-success btn-lg"> SIGN UP </button></a>
+                </div>
+                <div class="profile-userbuttons">
+                    <a href="<%= new_user_session_path %>"><button type="button" class="btn btn-success btn-lg"> SIGN IN </button></a>
+                </div>
+            </div>
+        </div>
+        <!-- not logged in view -->
+    <% end %>
+</div>
