@@ -13,7 +13,8 @@
  *= require_tree .
  *= require_self
  */
-// sematic UI css items
+
+/*sematic UI css items*/
 
 $font-family: 'helvetica';
 @import "semantic-ui";
@@ -23,7 +24,7 @@ $font-family: 'helvetica';
 .not-logged{
     background-image: url(../images/RAD_APR_2020.jpg);
 }
-//overriding SEMANTIC UI
+/*overriding SEMANTIC UI*/
 .ui.secondary.segment{
     background-color: #5CA4A9 !important ;
     opacity: 0.82 !important ;
@@ -33,7 +34,7 @@ $font-family: 'helvetica';
     //background-color: #E6EBE0 !important;
 }
 
-//pre existing custom css
+/*pre existing custom css*/
 
 .larger-text{
     font-size: x-large !important;
