@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     get '/pages/plans', to: 'pages#plans'
     get '/pages/policy', to: 'pages#policy'
     get '/pages/userinfo', to: 'pages#userinfo'
-    resources :posts, :coffees, :waters
+    resources :posts, :coffees, :waters, :meetings
 end
