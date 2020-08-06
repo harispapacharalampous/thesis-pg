@@ -5,6 +5,7 @@ class User < ApplicationRecord
     has_many :waters
     #callback cue
     after_create :populate_meetings
+    after_create :send_emails
     # the sign up callback after_create
 
   # Include default devise modules. Others available are:
@@ -12,13 +13,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-   def after_database_authentication
+   def send_emails
         if self.condition ==1
-                RegMailer.comp_email(self).deliver_later(wait: 2.hour)
-                RegMailer.comp_email_2(self).deliver_later(wait: 5.hour)
-                RegMailer.comp_email_3(self).deliver_later(wait: 8.hour)
-                RegMailer.comp_email_4(self).deliver_later(wait: 11.hour)
-                RegMailer.comp_email_5(self).deliver_later(wait: 14.hour)
+                RegMailer.comp_email(self).deliver_now
+                RegMailer.comp_email_2(self).deliver_now
+                RegMailer.comp_email_3(self).deliver_now
+                RegMailer.comp_email_4(self).deliver_now
+                RegMailer.comp_email_5(self).deliver_now
         end
     end
 
