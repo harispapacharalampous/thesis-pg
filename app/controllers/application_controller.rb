@@ -1,8 +1,23 @@
 class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
 
+    #not working
     def show
         render template: "pages/#{params[:page]}"
+    end
+
+    def new_entry
+        render template: "pages/newentrypreface"
+    end
+
+    def plans
+        render template: "pages/plans"
+    end
+    def policy
+        render template: "pages/policy"
+    end
+    def userinfo
+        render template: "pages/userinfo"
     end
 
    protected
