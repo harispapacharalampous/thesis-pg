@@ -6,7 +6,9 @@ Licensed under MIT
 <div class="container">
             <% if current_user %>
             <div class="ui two column grid segment">
-                <div class="column">
+                <div class="row center">
+                    <div class="ui column center " >
+
                     <!-- SIDEBAR USER TITLE -->
                         <div class="row justify-content-center">
                             <div class="profile-usertitle">
@@ -16,6 +18,7 @@ Licensed under MIT
                             </div>
                         </div>
                     <!-- END SIDEBAR USER TITLE -->
+
                     <!-- SIDEBAR BUTTONS -->
                     <div class="row justify-content-center">
                     <div class="profile-userbuttons">
@@ -23,38 +26,43 @@ Licensed under MIT
                         <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class:"ui negative medium button"%>
                         </div>
                         <div class="field">
-                        <%= link_to "Edit user preferences", edit_user_registration_path, class:"ui small basic button"%>
+                        <%= link_to "Edit user preferences", edit_user_registration_path, class:"ui small basic black button"%>
                         </div>
                     </div>
                     </div>
                     <br>
                     <br>
                 <% end %>
+                </div >
 				<!-- END SIDEBAR BUTTONS -->
+
+
                 <!-- USER water and coffee and add actions-->
+                <div class="ui column center ">
                 <% if current_user %>
                 <div class="row justify-content-center">
-                    <div class="col-md-auto">
+                    <div class="col-md-auto" style="margin-top:20px;">
                         <!-- <p class="h5">Water drank today:</p>
                         <br> -->
                         <!-- displays current weeks count, ped day-->
                         <p class="h5">Coffee drank today:
                             <%= current_user.coffees.select{|coffee| coffee.created_at.day == DateTime.now.day }.size %><b> / <%= current_user.climit %> cups </b>
                             <div class="profile-userbuttons">
-                                <%= link_to "Add coffee" , new_coffee_path(:coffee =>{:measurement_type => '1', :quantity => '1', :user_id => current_user.id}), class: "ui basic button" %>
+                                <%= link_to "Add coffee" , new_coffee_path(:coffee =>{:measurement_type => '1', :quantity => '1', :user_id => current_user.id}), class: "ui basic brown button" %>
                             </div>
                         </p>
                         <!-- displays current weeks count, ped day-->
                         <p class="h5">Water drank today:
                             <%= current_user.waters.select{|water| water.created_at.day == DateTime.now.day }.size %><b> / <%= current_user.wlimit %> cups</b>
                             <div class="profile-userbuttons">
-                                <%= link_to "Add water" , new_water_path(:water =>{:measurement_type => '1', :quantity => '1', :user_id => current_user.id}), class: "ui basic button" %>
+                                <%= link_to "Add water" , new_water_path(:water =>{:measurement_type => '1', :quantity => '1', :user_id => current_user.id}), class: "ui basic blue  button" %>
                             </div>
                         </p>
                         <br>
                     </div>
                 </div>
                 <% end %>
+                </div>
                 <!-- USER water and coffee END -->
 
                 </div>
@@ -91,7 +99,7 @@ Licensed under MIT
                                             1 => {lineWidth: 2},
                                         },
                                         xtitle: "Time",
-                                        ytitle: "Affect"
+                                        ytitle: "Mood"
                                     }  %>
                                 </div>
                             <% else %>
