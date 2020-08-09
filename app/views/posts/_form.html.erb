@@ -28,7 +28,7 @@
     <label><%= form.label :body %></label>
       <div class="field">
           <div class = "inputs_forty">
-            <%= form.text_area :body, rows: "4" %>
+            <%= form.text_area :body, rows: "4",placeholder: "activity description" %>
           </div>
       </div>
   </div>
@@ -57,7 +57,7 @@
     <label><%= form.label :created_at %></label>
       <div class="field">
         <div class = "inputs_forty">
-            <%= form.datetime_field :created_at %>
+            <%= form.datetime_field :created_at ,as: :bootstrap_datepicker %>
         </div>
       </div>
   </div>
