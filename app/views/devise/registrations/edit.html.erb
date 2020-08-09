@@ -1,11 +1,5 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
-    <!-- condition -->
-    <% if current_user.condition ==0 %>
-        <%=  current_user.condition%>
-    <% elsif current_user.condition ==1 %>
-        <%=  current_user.condition%>
-    <% end %>
-    <!-- condition -->
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 

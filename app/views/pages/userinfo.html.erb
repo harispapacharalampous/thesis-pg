@@ -80,28 +80,23 @@ Licensed under MIT
                         <% if current_user %>
                             <!-- chart affect for posts -->
                             <% if current_user && current_user.condition == 1 %>
-                                <!-- option 1: ugly overlaid graph with library settings -->
-                                <%#= line_chart [
-                                  {name: "All users", data: Post.pluck("created_at, affect")},
-                                  {name: "Your data", data: current_user.posts.pluck("created_at, affect")}
-                                ], library:  lib_set_affect  %>
-                                <br>
-                                <!-- option 2: WORKING divided graph with avg and individual lines -->
-                                <div class="row ui raised segment">
-                                    <p class="ui ribbon label large blue">How other users' mood relate to yours:</p>
-                                     <%= line_chart [
-                                      {name: "All users", data: Post.group_by_week(:created_at).average(:affect)},
-                                      {name: "Your data", data: current_user.posts.group_by_week(:created_at).average(:affect)}
-                                    ], {
-                                        colors: ['#696969', '#1111cc'],
-                                        series: {
-                                            0 => {lineWidth: 1},
-                                            1 => {lineWidth: 2},
-                                        },
-                                        xtitle: "Time",
-                                        ytitle: "Mood"
-                                    }  %>
+                                <!-- option 3-- multi line graph -->
+                                <!-- UNDER CONSTRUCTION styling pending-->
+                                <div class="row ui raised  segment">
+                                    <p class="ui ribbon label large blue">How other users' mood relate to yours :</p>
+
+                                    <!-- collecteing usrs with posts and showing up to 5 -->
+                                    <% userswithposts = [];
+                                        User.all.each do |user|
+                                         if user.posts.count != 0
+                                             userswithposts.push user
+                                         end
+                                        end %>
+                                     <%= line_chart userswithposts.sample(6).map { |user|
+                                        {name: user.username, data: user.posts.group_by_week(:created_at).average(:affect)}
+                                    }%>
                                 </div>
+                                <!-- end of multi line graph -->
                             <% else %>
                                 <div class="row ui raised segment">
                                     <p class="ui ribbon labelui ribbon label large blue">How your physical activity mood changes over time:</p>
@@ -111,34 +106,8 @@ Licensed under MIT
                             <% end %>
                             <!-- chart entertainment for posts -->
                             <% if current_user.condition == 1 %>
-                                    <!-- here -->
-
-                                <!-- option 1: ugly overlaid graph with library settings -->
-                                <%#= line_chart [
-                                  {name: "All users", data: Post.pluck("created_at, entertainment")},
-                                  {name: "Your data", data: current_user.posts.pluck("created_at, entertainment")}
-                                ], library:  lib_set_entertainment %>
-                                <!-- end of ugly overlaid graph with library settings -->
-
-                                <!-- option 2: WORKING divided graph with avg and individual lines -->
-                                <div class="row ui raised  segment">
-                                    <p class="ui ribbon label large blue">How other users' experiences relate to yours :</p>
-                                    <%= line_chart [
-                                      {name: "All users", data: Post.group_by_week(:created_at).average(:entertainment)},
-                                      {name: "Your data", data: current_user.posts.group_by_week(:created_at).average(:entertainment)}
-                                    ],
-                                        colors: ['#696969', '#3366cc'],
-                                        series: {
-                                            0 => {lineWidth: 1},
-                                            1 => {lineWidth: 2},
-                                        },
-                                        xtitle: "Time",
-                                        ytitle: "Entertainment"
-                                     %>
-                                </div>
-                                <!-- end of divided graph with avg and individual lines -->
-
                                 <!-- option 3-- multi line graph -->
+                                <!-- UNDER CONSTRUCTION styling pending-->
                                 <div class="row ui raised  segment">
                                     <p class="ui ribbon label large blue">How other users' experiences relate to yours :</p>
 
@@ -152,9 +121,6 @@ Licensed under MIT
                                      <%= line_chart userswithposts.sample(6).map { |user|
                                         {name: user.username, data: user.posts.group_by_week(:created_at).average(:entertainment)}
                                     }%>
-
-                                     <!-- UNDER CONSTRUCTION styling pending-->
-
                                 </div>
                                 <!-- end of multi line graph -->
                             <% else %>

@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   def home
   end
 
-       def new_entry
+    def new_entry
         render template: "pages/newentrypreface"
     end
 
