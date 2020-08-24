@@ -10,20 +10,34 @@
       </ul>
     </div>
   <% end %>
-
+<!-- html form components -->
   <%= form.hidden_field :user_id, value: current_user.id %>
-  <div class="field">
-    <p><b>Measurement Type:</b> Cup</p>
-    <%= form.hidden_field :measurement_type, value: 1 %>
-  </div>
+  <!-- semantic ui form -->
+<div class="ui form " style="width: 70%; align-self:center; margin-top: 10%">
+    <div class="ui two column centered grid">
+        <div class="column"></div>
+        <div class="column">
+          <h1 class="ui dividing header">Water Entry &nbsp;<i class="water icon"></i></h1>
 
-  <div class="field">
-    <p><b>Quantity:</b> 1</p>
-    <%= form.hidden_field :quantity, value: 1 %>
-  </div>
+            <div class="ui message" style="background-color: lightgray">
+                <ul class="list">
+                    <li><h3><b>Measurement Type:</b> Cup</h3></li>
+                    <li><h3><b>Quantity:</b> 1</h3></li>
+                </ul>
+            </div>
+            <%= form.hidden_field :measurement_type, value: 1 %>
+            <%= form.hidden_field :quantity, value: 1 %>
 
+          <div class="actions center">
+            <%= form.submit 'Submit entry', :class => 'ui button teal large' %>
+          </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+            <div class="actions center">
+            <%= link_to 'Back', "/pages/userinfo", class: 'ui button small' %>
+            </div>
+
+        </div>
+    </div>
+<!-- end of semantic ui form -->
 <% end %>
+

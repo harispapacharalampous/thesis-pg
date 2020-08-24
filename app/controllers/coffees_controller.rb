@@ -28,7 +28,7 @@ class CoffeesController < ApplicationController
 
     respond_to do |format|
       if @coffee.save
-        format.html { redirect_to @coffee, notice: 'Coffee was successfully created.' }
+        format.html { redirect_to "/pages/userinfo" }
         format.json { render :show, status: :created, location: @coffee }
       else
         format.html { render :new }

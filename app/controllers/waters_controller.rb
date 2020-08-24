@@ -28,7 +28,7 @@ class WatersController < ApplicationController
 
     respond_to do |format|
       if @water.save
-        format.html { redirect_to @water, notice: 'Water was successfully created.' }
+        format.html { redirect_to "/pages/userinfo" }
         format.json { render :show, status: :created, location: @water }
       else
         format.html { render :new }
