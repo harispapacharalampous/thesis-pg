@@ -15,9 +15,7 @@ class User < ApplicationRecord
 
    def send_emails
         if self.condition ==1
-                if self.posts.count >0
-                    RegMailer.comp_email(self).deliver_later(wait_until: 48.hours.from_now)
-                end
+                RegMailer.comp_email(self).deliver_later(wait_until: 48.hours.from_now)
                 RegMailer.comp_email_2(self).deliver_later(wait_until: 120.hours.from_now)
                 RegMailer.comp_email_3(self).deliver_later(wait_until: 192.hours.from_now)
                 RegMailer.comp_email_4(self).deliver_later(wait_until: 264.hours.from_now)
