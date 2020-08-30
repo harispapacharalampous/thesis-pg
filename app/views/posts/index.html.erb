@@ -81,6 +81,36 @@
                                             Afternoon Commute
                                         <% elsif post.entry_type==2 && post.created_at.hour < 12 %>
                                             Morning Commute
+                                        <% elsif post.entry_type==3 && post.created_at.hour > 12 %>
+                                            Afternoon Run
+                                        <% elsif post.entry_type==3 && post.created_at.hour < 12 %>
+                                            Morning Run
+                                        <% elsif post.entry_type==4 && post.created_at.hour > 12 %>
+                                            Afternoon Stair Climbing Session
+                                        <% elsif post.entry_type==4 && post.created_at.hour < 12 %>
+                                            Morning Stair Climbing Session
+                                        <% elsif post.entry_type==5 && post.created_at.hour > 12 %>
+                                            Afternoon Stretching Session
+                                        <% elsif post.entry_type==5 && post.created_at.hour < 12 %>
+                                            Morning Stretching Session
+                                        <% elsif post.entry_type==6 && post.created_at.hour < 12 %>
+                                            Morning Yoga Session
+                                        <% elsif post.entry_type==6 && post.created_at.hour > 12 %>
+                                            Afternoon Yoga Session
+                                        <% elsif post.entry_type==7 && post.created_at.hour < 12 %>
+                                            Morning Elliptical Session
+                                        <% elsif post.entry_type==7 && post.created_at.hour > 12 %>
+                                            Afternoon Elliptical Session
+                                        <% elsif post.entry_type==8 && post.created_at.hour < 12 %>
+                                            Morning Gardening Session
+                                        <% elsif post.entry_type==8 && post.created_at.hour > 12 %>
+                                            Afternoon Gardening Session
+                                        <% elsif post.entry_type==9 && post.created_at.hour < 12 %>
+                                            Morning Housework
+                                        <% elsif post.entry_type==9 && post.created_at.hour > 12 %>
+                                            Afternoon Housework
+                                        <% else %>
+                                            <%= post.title %>
                                         <% end %>
                                     </div>
                                 </div>
