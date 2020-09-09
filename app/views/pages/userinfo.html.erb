@@ -93,7 +93,7 @@ Licensed under MIT
                                          end
                                         end %>
                                      <%= line_chart userswithposts.sample(6).map { |user|
-                                        {name: user.username, data: user.posts.group_by_week(:created_at).average(:affect)}
+                                        {name: "User no. #{user.id}", data: user.posts.group_by_week(:created_at).average(:affect)}
                                     }%>
                                 </div>
                                 <!-- end of multi line graph -->
@@ -119,7 +119,7 @@ Licensed under MIT
                                          end
                                         end %>
                                      <%= line_chart userswithposts.sample(6).map { |user|
-                                        {name: user.username, data: user.posts.group_by_week(:created_at).average(:entertainment)}
+                                        {name: "User no. #{user.id}", data: user.posts.group_by_week(:created_at).average(:entertainment)}
                                     }%>
                                 </div>
                                 <!-- end of multi line graph -->
