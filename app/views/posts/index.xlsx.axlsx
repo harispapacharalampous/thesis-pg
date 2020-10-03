@@ -1,0 +1,10 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Posts") do |sheet|
+  title = wb.styles.add_style(b: true, bg_color: "395870", fg_color: "FFFFFF",
+                              alignment: {horizontal: :center})
+  sheet.add_row ["ID", "Body", "Title", "created_at",
+                               "affect", "entertainment", "entry type"], style: title
+  @posts.each do |post|
+    sheet.add_row [post.user_id, post.body, post.title, post.created_at, post.affect, post.entertainment, post.entry_type]
+  end
+end

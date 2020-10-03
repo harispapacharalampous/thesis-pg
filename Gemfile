@@ -64,3 +64,7 @@ gem 'simple_form_extension'
 gem 'simple_form'
 gem 'semantic-ui-sass'
 gem 'redactor-rails', '0.3.2'
+
+gem 'rubyzip'
+gem 'axlsx'
+gem 'axlsx_rails'

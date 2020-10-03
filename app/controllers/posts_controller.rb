@@ -7,6 +7,13 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+
+    respond_to do |format|
+        format.html
+        format.csv { send_data @posts.as_csv }
+        format.xlsx
+    end
+
   end
 
   # GET /posts/1

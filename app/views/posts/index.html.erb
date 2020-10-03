@@ -4,6 +4,7 @@
 <% if current_user %>
     <% if current_user.posts.empty?%>
     <div class="column">
+        <%= link_to 'Export XLSX', posts_path(format: :xlsx) %>
         <div class="ui middle aligned center aligned grid ">
             <div class="row" style="margin-top: 10%">
                 <div class="eleven wide column">
@@ -31,6 +32,7 @@
                 <div class="eleven wide column">
                   <% if current_user && current_user.admin %>
                         <!-- admin view -->
+
                         <% @posts.order(created_at: :desc).each do |post| %>
                             <div class="ui secondary segment ">
                                 <!-- post segment -->
@@ -62,6 +64,7 @@
 
                             </div>
                         <% end %>
+
                         <!-- admin view end -->
                   <% else %>
                         <!-- guest view -->
