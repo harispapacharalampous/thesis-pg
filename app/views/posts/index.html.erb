@@ -4,7 +4,7 @@
 <% if current_user %>
     <% if current_user.posts.empty?%>
     <div class="column">
-        <%= link_to 'Export XLSX', posts_path(format: :xlsx) %>
+        <%#= link_to 'Export XLSX', posts_path(format: :xlsx) %>
         <div class="ui middle aligned center aligned grid ">
             <div class="row" style="margin-top: 10%">
                 <div class="eleven wide column">
